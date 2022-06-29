@@ -8,6 +8,7 @@ Game::Game()
 
 void Game::Reset()
 {
+	Console::ResetColor();
 	Console::SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 	Console::CursorVisible(false);
 	paddle.width = 12;
@@ -85,10 +86,12 @@ void Game::Render() const
 	}
 	if (brick.empty() == true) {
 		Console::SetCursorPosition(Console::WindowHeight() / 3, Console::WindowHeight() / 2);
+		Console::ForegroundColor(ConsoleColor::White);
 		std::cout << "Congratulations fam! You won, press R to restart";
 	}
 	if (ball.y_position == Console::WindowHeight() - 1) {
 		Console::SetCursorPosition(Console::WindowHeight() / 3, Console::WindowHeight() / 2);
+		Console::ForegroundColor(ConsoleColor::Red);
 		std::cout << "Man you suck! Looooser, press R to restart";
 	}
 	Console::Lock(false);
